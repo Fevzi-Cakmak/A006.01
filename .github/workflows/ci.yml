@@ -25,8 +25,8 @@ jobs:
     - name: Bağımlılıkları yükle
       run: |
         python -m pip install --upgrade pip
-        pip install numpy pandas scipy scikit-learn matplotlib seaborn openpyxl tqdm pytest pytest-cov
+        pip install numpy pandas scipy scikit-learn matplotlib seaborn openpyxl tqdm pytest
 
     - name: Testleri çalıştır
       run: |
-        pytest -v
+        python -m pytest tests/ -v
