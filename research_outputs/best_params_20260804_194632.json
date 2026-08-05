@@ -1,0 +1,15 @@
+{
+    "stop_loss_ratio": 0.11095824194223852,
+    "trailing_stop_ratio": 0.07194392198760262,
+    "rsi_low": 63.58597919911382,
+    "adx_strong": 32.88157620341555,
+    "volume_high_ratio": 1.8659241435213547,
+    "total_trades": 1,
+    "win_rate": 0.0,
+    "avg_return": -11.36,
+    "bile\u015fik_getiri": -11.36,
+    "profit_factor": 0.0,
+    "max_win": -11.36,
+    "max_loss": -11.36,
+    "status": "SUCCESS"
+}

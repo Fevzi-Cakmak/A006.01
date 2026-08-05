@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vios-a006"
+version = "0.1.0"
+description = "VIOS A006 - Quant Research Backtest Engine"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Proprietary"}
+authors = [
+    {name = "VIOS Team", email = "research@vios.com"}
+]
+dependencies = [
+    "numpy>=2.3.2",
+    "pandas>=2.3.2",
+    "openpyxl>=3.1",
+    "matplotlib>=3.7",
+    "seaborn>=0.12",
+    "scikit-learn>=1.7.2",
+    "scipy>=1.16.1",
+    "tqdm>=4.66",
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=23.0",
+    "ruff>=0.1",
+    "mypy>=1.0",
+    "pre-commit>=3.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["research*", "engine*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+# [tool.pytest.ini_options]
+# testpaths = ["tests"]
+# addopts = "--cov=research --cov=engine --cov-report=html --cov-report=term --cov-report=xml --cov-fail-under=90 -v"

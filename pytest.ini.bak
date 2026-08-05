@@ -1,0 +1,17 @@
+[pytest]
+testpaths = tests
+python_files = test_*.py
+python_classes = Test*
+python_functions = test_*
+
+addopts = 
+    --cov=research.importance
+    --cov=research.stats
+    --cov=research.reporting
+    --cov=research.config
+    --cov=research.constants
+    --cov-report=html
+    --cov-report=term
+    --cov-report=xml
+    --cov-fail-under=80
+    -v
