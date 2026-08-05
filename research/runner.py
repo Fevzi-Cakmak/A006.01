@@ -182,7 +182,7 @@ class ResearchRunner:
             )
             combined = pd.merge(rf_imp, perm_imp, on='feature', how='outer')
             
-            # Normalize et (0-1 arası) ve ortak skor oluştur (Öneri #3)
+            # Normalize et (0-1 arası) ve ortak skor oluştur
             combined['rf_norm'] = combined['rf_mdi_importance'] / combined['rf_mdi_importance'].max()
             combined['perm_norm'] = combined['permutation_mean'] / combined['permutation_mean'].max()
             combined['combined_score'] = (combined['rf_norm'] + combined['perm_norm']) / 2
@@ -234,4 +234,22 @@ class ResearchRunner:
         except Exception as e:
             logger.error(f"Executive Summary hatası: {e}")
         
+        # 5. Sobol Duyarlılık Analizi
+        try:
+            logger.info("Sobol duyarlılık analizi hesaplanıyor...")
+            from .sensitivity import compute_sobol_indices
+            sobol_df = compute_sobol_indices(
+                self.results_df,
+                target_col=target,
+                param_cols=param_cols,
+                n_samples=1024,
+                random_state=self.config.rf_random_state
+            )
+            if not sobol_df.empty:
+                results['Sobol Duyarlılık'] = sobol_df
+        except ImportError as e:
+            logger.warning(f"Sobol analizi atlandı (SALib yüklü değil): {e}")
+        except Exception as e:
+            logger.error(f"Sobol analizi hatası: {e}")
+
         return results
