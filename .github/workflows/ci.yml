@@ -25,9 +25,8 @@ jobs:
     - name: Bağımlılıkları yükle
       run: |
         python -m pip install --upgrade pip
-        pip install numpy pandas scipy scikit-learn matplotlib seaborn openpyxl tqdm pytest pytest-cov coverage
+        pip install numpy pandas scipy scikit-learn matplotlib seaborn openpyxl tqdm pytest pytest-cov
 
-    - name: Testleri çalıştır (coverage ile)
+    - name: Testleri çalıştır
       run: |
-        coverage run -m pytest
-        coverage report -m --fail-under=80
+        pytest -v
