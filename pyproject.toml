@@ -43,6 +43,16 @@ target-version = "py310"
 [tool.mypy]
 python_version = "3.10"
 ignore_missing_imports = true
-# [tool.pytest.ini_options]
-# testpaths = ["tests"]
-# addopts = "--cov=research --cov=engine --cov-report=html --cov-report=term --cov-report=xml --cov-fail-under=90 -v"
+
+# =============== YENİ / AKTİF PYTESTS AYARLARI ===============
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = [
+    "-v",
+    "--cov=research.importance",
+    "--cov=research.stats",
+    "--cov=research.reporting",
+    "--cov=research.config",
+    "--cov=research.constants",
+    "--cov-fail-under=80",
+]
